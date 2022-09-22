@@ -25,8 +25,8 @@ Given(
   },
 );
 
-When(/^Alice posts her message$/, function () {
-  appService.postingMessageInPersonalTimeline(this.message);
+When(/^Alice posts her message$/, async function () {
+  await appService.postingMessageInPersonalTimeline(this.message);
 });
 
 Then(/^The message is created as shown in the table$/, function (table) {
