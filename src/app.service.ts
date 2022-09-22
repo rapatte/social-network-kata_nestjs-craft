@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { Message } from '../types/Message';
+import { TimelineMocked } from './app.repository';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  async postingMessageInPersonalTimeline(message: Message): Promise<Message> {
+    TimelineMocked.push(message);
+    return message;
   }
 }
