@@ -5,7 +5,7 @@ Feature: Timeline
         Given Alice wants to publish on her timeline a message as shown in the table
             | author | Alice |
             | message | Bonjour je suis Alice, enchantée. |
-        When Alice post her message
+        When Alice posts her message
         Then The message is created as shown in the table
             | author | Alice |
             | message | Bonjour je suis Alice, enchantée. |
