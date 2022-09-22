@@ -26,4 +26,15 @@ describe('AppController (e2e)', () => {
         message: 'Hello.',
       });
   });
+  it('/ (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/')
+      .expect(200)
+      .expect([
+        { author: 'Kevin', message: 'Pouetpouet.' },
+        { author: 'Michel', message: "C'est le brésil." },
+        { author: 'Laura', message: 'Hello.' },
+        { author: 'Alice', message: 'Hello.' },
+      ]);
+  });
 });

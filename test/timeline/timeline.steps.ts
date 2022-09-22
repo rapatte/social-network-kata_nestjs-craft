@@ -17,6 +17,7 @@ Before(async function () {
   timeline = TimelineMocked;
 });
 
+//Posting test
 Given(
   /^Alice wants to publish on her timeline a message as shown in the table$/,
   function (table) {
@@ -26,7 +27,6 @@ Given(
 
 When(/^Alice posts her message$/, function () {
   appService.postingMessageInPersonalTimeline(this.message);
-  console.log(timeline);
 });
 
 Then(/^The message is created as shown in the table$/, function (table) {
@@ -34,3 +34,21 @@ Then(/^The message is created as shown in the table$/, function (table) {
   this.expectedMessage = table.rowsHash();
   expect(this.lastMessage).to.eql(this.expectedMessage);
 });
+
+//Reading test
+Given(
+  /^Bob should view Alice timeline as shown in the table$/,
+  function (table) {
+    this.expectedTimeline = table.hashes();
+  },
+);
+When(/^Bob browse Alice timeline$/, async function () {
+  this.timeline = await appService.readingMessageInPersonnalTimeline();
+});
+Then(
+  /^All messages appear in the timeline as shown in the first table$/,
+  function () {
+    expect(this.timeline.length).to.eql(this.expectedTimeline.length);
+    expect(this.timeline).to.eql(this.expectedTimeline);
+  },
+);
