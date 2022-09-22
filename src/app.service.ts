@@ -8,4 +8,7 @@ export class AppService {
     TimelineMocked.push(message);
     return message;
   }
+  async readingMessageInPersonnalTimeline(): Promise<Message[]> {
+    return TimelineMocked;
+  }
 }
